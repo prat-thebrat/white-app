@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+
+.confirmB{
+    background: #3acabb;
+    font-family: 'Happy Monkey', cursive;
+    border-radius: 25px;
+    color: black;
+    width: auto;
+    font-size: 25px;
+
+  }
+/* .confirm-btn{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: right;
+    background: none;
+} */
+
+.confirmB:hover:enabled {
+  background-color: #FFB668;
+  border: 2px solid #342D43;
+  color: #342D43;
+}
+
+.editB{
+    background: #3acabb;
+    font-family: 'Happy Monkey', cursive;
+    border-radius: 25px;
+    color: black;
+    width: auto;
+    font-size: 25px;
+
+  }
+/* .edit-btn{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: left;
+    background: none;
+} */
+
+.editB:hover:enabled {
+  background-color: #FFB668;
+  border: 2px solid #342D43;
+  color: #342D43;
+}
+
+
+.confirm-btn {
+    position: absolute;
+    top: 85%;
+    right: 80px; /* Adjust this value as needed */
+    transform: translateY(-50%);
+    background: none;
+  }
+  
+  .edit-btn {
+    position: absolute;
+    top: 85%;
+    left: 80px; /* Adjust this value as needed */
+    transform: translateY(-50%);
+    background: none;
+  }
+  
+  .confirm {
+    position: absolute;
+    top: 75px; /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: none;
+  }
+  
+  .confirm h1 {
+    font-family: 'Happy Monkey', cursive;
+    color: black;
+    background: none;
+  }
+  body {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: 100vh;
+  }
+  
+  /* .rectangle {
+    width: 900px; /* Adjust the width value as desired */
+    /* height: 380px; Adjust the height value as desired */
+    /* flex-shrink: 0;
+    border-radius: 100px;
+    background: none;
+  }
+  
+  .rect {
+    background: #FFEFCB;
+    flex-shrink: 0;
+    border-radius: 100px;
+    width: 900px; /* Adjust the width value to match the rectangle class */
+    /* height: 380px; Adjust the height value to match the rectangle class */
+  /* }
+  
+  .triangle{
+    width: 102px;
+    height: 154px;
+    transform: rotate(-130deg);
+    flex-shrink: 0;
+    background: #FFEFCB;
+  } */ 
+/* 
+  .rectangle {
+    position: relative;
+    width: 900px; /* Adjust the width value as desired */
+    /* height: 380px; /* Adjust the height value as desired */
+    /* flex-shrink: 0;
+    border-radius: 100px;
+    background: #FFEFCB; */ 
+  /* } */
+  
+  /* .triangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 77px solid transparent;
+    border-right: 154px solid #FFEFCB; */
+  /* } */ 
+
+
+  .chat-bubble {
+    position: relative;
+    /* display: inline-block; */
+    padding: 10px;
+    border-radius: 100px;
+    background: #FFEFCB;
+    width:900px;
+    height: 380px;
+    /* background: none; */
+  }
+
+  
+  .chat-bubble::before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    /* border-top: 100x solid transparent;
+    border-bottom: 100px solid #FFEFCB;
+    border-left: 100px solid #FFEFCB; */
+    background: none;
+  }
+
+  .okk{
+    background: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

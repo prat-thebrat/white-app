@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(209,208,255,1) 100%);
+    font-family: 'Inter', sans-serif;
+    font-style: sans-serif;
+    /* outline: 1px solid red;  */
+  }
+
+.getstartedB{
+    background: #3acabb;
+    font-family: 'Happy Monkey', cursive;
+    border-radius: 25px;
+    color: black;
+    width: auto;
+    font-size: 25px;
+
+  }
+.get-started-btn{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    background: none;
+}
+
+.getstartedB:hover:enabled {
+  background-color: #FFB668;
+  border: 2px solid #342D43;
+  color: #342D43;
+}
+
+.logo{
+  position: absolute;
+  top: 40%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  background: none;
+}
+
+.carok{
+  background: none;
+}
+
+.foot{
+  position: absolute;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+  /* background: rgba(255, 182, 104, 0.3); */
+  /* background-color: #f4d0a3; */
+  
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: 'Happy Monkey', cursive;
+  background: none;
+  color: black;
+}
