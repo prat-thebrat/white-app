@@ -1,0 +1,117 @@
+/* .container{
+    background: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+
+.form-group{
+    background: none;
+}
+
+.okji{
+    background: none;
+}
+
+.upload{
+    position: absolute;
+    top: 184px; /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: none;
+}
+.upload h1{
+    font-family: 'Happy Monkey', cursive;
+    color: black;
+    background: none;
+    text-align: center;
+
+}
+body{
+    display: flex;
+  /*align-items: center;
+  justify-content: center;*/
+  height: 100vh;
+}
+.choose-files {
+    display: block;
+    margin: 0 auto;
+  }
+
+.upload-btn{
+    position: absolute;
+    top: 80%;
+    right: 150px; /* Adjust this value as needed */
+    transform: translateY(-50%);
+    background: none;
+}
+
+.uploadb{
+        background: #3acabb;
+        font-family: 'Happy Monkey', cursive;
+        border-radius: 25px;
+        color: black;
+        width: auto;
+        font-size: 25px;
+}
+.uploadb:hover:enabled {
+    background-color: #FFB668;
+    border: 2px solid #342D43;
+    color: #342D43;
+}
+
+.choose-files{
+    position: absolute;
+    top: 184px; /* Adjust this value as needed */
+    left: 0px;
+    transform: translateX(-50%);
+    text-align: center;
+    background: none;
+    height: auto;
+    width: auto;
+}
+
+.break{
+    position: absolute;
+    top: 290px; /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: none;
+
+}
+
+.choose-fileB{
+    background: #FFEFCB;
+    width: 200%;
+    font-size: large;
+    height: auto;
+    /* padding-bottom: 5px; */
+    padding: auto;
+
+}
+
+.file-list{
+    position: absolute;
+    top: 368px; /* Adjust this value as needed */
+    left: 46%;
+    transform: translateX(-50%);
+    text-align: left;
+    background: #FFEFCB;
+    background-color: #FFEFCB;
+
+}
+.file-list h2{
+
+    background: #FFEFCB;
+    font-family: 'Happy Monkey', cursive;
+    width: 200%;
+    font-size: large;
+
+
+}
+.file-list ul{
+    
+}
