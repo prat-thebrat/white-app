@@ -4,7 +4,9 @@ import sys
 import os
 
 # Initialize Firebase app
-initialize_app()
+cred = credentials.Certificate(
+    './client/white-9a82b-firebase-adminsdk-8h87g-4dd23eab66.json')
+initialize_app(cred)
 
 
 def download_csv_from_storage(firebase_url):
@@ -12,7 +14,7 @@ def download_csv_from_storage(firebase_url):
     blob = bucket.blob(firebase_url)
 
     # Download CSV file from Firebase Storage
-    local_folder = './client/public/downCSV'
+    local_folder = './downCSV'
     os.makedirs(local_folder, exist_ok=True)
 
     local_path = os.path.join(local_folder, 'file.csv')
@@ -54,7 +56,7 @@ if __name__ == "__main__":
     df = convert_csv_to_dataframe(csv_file)
 
     # Save DataFrame as a text file
-    text_folder = './client/public/txtFiles'
+    text_folder = './txtFiles'
     os.makedirs(text_folder, exist_ok=True)
 
     text_file = os.path.join(text_folder, 'file.txt')

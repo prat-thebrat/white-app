@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { storage } from '../Firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import axios from 'axios';
-import './Upload.css';
 
 function Upload() {
   const [progress, setProgress] = useState(0);
@@ -37,12 +36,13 @@ function Upload() {
 
   const triggerPythonScript = async (downloadURL) => {
     try {
-      const response = await axios.post('/api/process-csv', { downloadURL });
+      const response = await axios.post('http://127.0.0.1:5000/api/process-csv', { downloadURL });
       console.log(response.data);
     } catch (error) {
       console.error('Error triggering Python script:', error);
     }
   };
+
   return (
     <div className="App">
       <form onSubmit={formHandler}>
@@ -53,7 +53,6 @@ function Upload() {
       <h3>Uploaded {progress} %</h3>
     </div>
   );
-  
 }
 
 export default Upload;

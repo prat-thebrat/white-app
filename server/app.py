@@ -12,7 +12,8 @@ def process_csv():
     download_url = data['downloadURL']
 
     # Run the Python code using subprocess
-    cmd = ['python', './client/firebase-csv2relations.py', download_url]
+    cmd = ['/opt/homebrew/bin/python3',
+           './firebase-csv2relations.py', download_url]
     subprocess.run(cmd, check=True)
 
     return 'Python code executed successfully'
