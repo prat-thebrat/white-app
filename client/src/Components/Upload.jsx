@@ -1,57 +1,59 @@
 import React, { useState } from 'react';
-import { storage } from '../Firebase';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "../Components/Upload.css";
 
 function Upload() {
   const [progress, setProgress] = useState(0);
+  const navigateTo = useNavigate();
 
   const formHandler = async (e) => {
     e.preventDefault();
     const file = e.target[0].files[0];
-    await uploadFiles(file);
+    await uploadFile(file);
   };
 
-  const uploadFiles = async (file) => {
+  const uploadFile = async (file) => {
     if (!file) return;
-    const storageRef = ref(storage, `/files/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
 
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-        setProgress(prog);
-      },
-      (error) => {
-        console.error('Error uploading file:', error);
-      },
-      async () => {
-        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        console.log('File uploaded successfully:', downloadURL);
-        await triggerPythonScript(downloadURL);
-      }
-    );
-  };
+    const formData = new FormData();
+    formData.append('file', file);
 
-  const triggerPythonScript = async (downloadURL) => {
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/process-csv', { downloadURL });
-      console.log(response.data);
+      const response = await axios.post('http://127.0.0.1:5000/upload', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (progressEvent) => {
+          const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+          setProgress(progress);
+        },
+      });
+
+      const downloadURL = response.data.download_url;
+      console.log('File uploaded successfully:', downloadURL);
+
+      // Redirect to "/relations" after successful upload
+      navigateTo('/relations');
     } catch (error) {
-      console.error('Error triggering Python script:', error);
+      console.error('Error uploading file:', error);
     }
   };
 
   return (
-    <div className="App">
-      <form onSubmit={formHandler}>
-        <input type="file" className="input" />
-        <button type="submit">Upload</button>
+    <>
+      <div className='upload'>
+        <h1>Upload Files...</h1>
+      </div>
+      <form onSubmit={formHandler} className='okkk'>
+        <input type="file" className="choose-fileB" />
+        <div className='upload-btn'>
+          <button className="uploadB" type="submit">Submit!</button>
+        </div>
       </form>
       <hr />
-      <h3>Uploaded {progress} %</h3>
-    </div>
+      <div className='progress'>
+        <h3>Uploaded {progress} %</h3>
+      </div>
+    </>
   );
 }
 
