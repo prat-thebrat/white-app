@@ -9,15 +9,18 @@ function Upload() {
 
   const formHandler = async (e) => {
     e.preventDefault();
-    const file = e.target[0].files[0];
-    await uploadFile(file);
+    const files = e.target[0].files;
+    await processFiles(files);
   };
 
-  const uploadFile = async (file) => {
-    if (!file) return;
+  const processFiles = async (files) => {
+    if (files.length === 0) return;
 
     const formData = new FormData();
-    formData.append('file', file);
+
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[i]);
+    }
 
     try {
       const response = await axios.post('http://127.0.0.1:5000/upload', formData, {
@@ -44,7 +47,7 @@ function Upload() {
         <h1>Upload Files...</h1>
       </div>
       <form onSubmit={formHandler} className='okkk'>
-        <input type="file" className="choose-fileB" />
+        <input type="file" className="choose-fileB" multiple />
         <div className='upload-btn'>
           <button className="uploadB" type="submit">Submit!</button>
         </div>
