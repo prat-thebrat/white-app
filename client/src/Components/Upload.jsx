@@ -31,8 +31,10 @@ function Upload() {
         },
       });
 
-      const downloadURL = response.data.download_url;
-      console.log('File uploaded successfully:', downloadURL);
+      const filename = response.data.filename;
+      const downloadURL = `http://https://storage.googleapis.com/white-9a82b.appspot.com/files/${filename}`; // Replace with your Firebase Storage bucket URL
+      console.log('File uploaded successfully:', filename);
+      console.log('Download URL:', downloadURL);
 
       // Redirect to "/relations" after successful upload
       navigateTo('/relations');

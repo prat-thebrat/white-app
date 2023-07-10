@@ -2,6 +2,8 @@ import firebase_admin
 from firebase_admin import credentials, storage
 import pandas as pd
 import openai
+import datetime
+import json
 
 openai.api_key = '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'
 
@@ -14,7 +16,7 @@ firebase_admin.initialize_app(cred, {
     'storageBucket': 'white-9a82b.appspot.com'
 })
 
-# Process the uploaded CSV files, collect column names with table references, and save as a combined string
+# Process the uploaded CSV files and generate output data
 
 
 def process_csv_files(files):
@@ -38,21 +40,27 @@ def process_csv_files(files):
             stop=None,
         )
 
-        out = response.choices[0].text.strip()
+        output = response.choices[0].text.strip()
     except Exception as e:
         print('Error generating relations:', str(e))
-        out = 'Error generating relations'
+        output = 'Error generating relations'
 
-    return out
+    data = {
+        'Name': 'user',
+        'Time': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        'output': output
+    }
 
-# Upload the combined columns string as a text file to Firebase Storage
+    return data
+
+# Upload the output data as a JSON file to Firebase Storage
 
 
-def upload_text_file(text):
+def upload_json_file(data):
     bucket = storage.bucket()
-    # Update with the desired path for the output text file in Firebase Storage
-    blob = bucket.blob('files/output.txt')
-    blob.upload_from_string(text, content_type='text/plain')
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    filename = f'files/output_{timestamp}.json'
+    blob = bucket.blob(filename)
+    blob.upload_from_string(json.dumps(data), content_type='application/json')
     blob.make_public()
-    download_url = blob.public_url
-    return download_url
+    return filename
