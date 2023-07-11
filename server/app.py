@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
-from upload_handler import process_csv_files, upload_json_file
+from upload_handler import process_csv_files, upload_json_file, retrieve_output_text
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -22,6 +23,17 @@ def handle_upload():
         return jsonify({'filename': filename})
 
     return jsonify({'error': 'Invalid file format'})
+
+
+@app.route('/api/output/latest', methods=['GET'])
+def get_latest_output_text():
+    data = retrieve_output_text()
+    if data is not None:
+        data_dict = json.loads(data)
+        output = data_dict['output']
+        if output is not None:
+            return jsonify({'outputText': output})
+    return jsonify({'error': 'Error retrieving output text'})
 
 
 if __name__ == '__main__':

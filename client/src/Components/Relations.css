@@ -139,6 +139,7 @@
     width:900px;
     height: 380px;
     /* background: none; */
+    
   }
 
   
@@ -159,4 +160,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .chat-text-center {
+    text-align: center;
+  
+  }
+
+  .relation{
+    padding-top: 175px;
+    background: none;
+    font-family: 'Happy Monkey', cursive;
+    color: black;
   }

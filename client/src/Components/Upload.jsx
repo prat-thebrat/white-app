@@ -32,7 +32,7 @@ function Upload() {
       });
 
       const filename = response.data.filename;
-      const downloadURL = `http://https://storage.googleapis.com/white-9a82b.appspot.com/files/${filename}`; // Replace with your Firebase Storage bucket URL
+      const downloadURL = `http://https://storage.googleapis.com/white-9a82b.appspot.com/${filename}`; // Replace with your Firebase Storage bucket URL
       console.log('File uploaded successfully:', filename);
       console.log('Download URL:', downloadURL);
 
@@ -54,7 +54,6 @@ function Upload() {
           <button className="uploadB" type="submit">Submit!</button>
         </div>
       </form>
-      <hr />
       <div className='progress'>
         <h3>Uploaded {progress} %</h3>
       </div>

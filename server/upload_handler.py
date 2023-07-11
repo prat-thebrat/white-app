@@ -4,8 +4,9 @@ import pandas as pd
 import openai
 import datetime
 import json
+import re
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 # Initialize Firebase Admin SDK
 # Update with your own service account key path
@@ -64,3 +65,29 @@ def upload_json_file(data):
     blob.upload_from_string(json.dumps(data), content_type='application/json')
     blob.make_public()
     return filename
+
+
+def retrieve_output_text():
+    bucket = storage.bucket()
+    blobs = bucket.list_blobs(prefix='files/output_')
+
+    latest_blob = None
+    latest_timestamp = None
+
+    for blob in blobs:
+        match = re.search(
+            r"output_(\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2})\.json", blob.name)
+        if match:
+            timestamp = match.group(1)
+            if latest_timestamp is None or timestamp > latest_timestamp:
+                latest_blob = blob
+                latest_timestamp = timestamp
+
+    if latest_blob is not None:
+        try:
+            text = latest_blob.download_as_text()
+            return text
+        except Exception as e:
+            print('Error retrieving output text:', str(e))
+
+    return None
